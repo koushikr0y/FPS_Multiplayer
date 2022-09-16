@@ -10,9 +10,16 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text overHeatMessage;
     [Header("Weapon")]
-    [FormerlySerializedAs(oldName:"tempSlider")]public Slider temperatureSlider;
+    [FormerlySerializedAs(oldName:"tempSlider")] public Slider temperatureSlider;
     private void Awake()
     {
-        instance = this; 
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 }

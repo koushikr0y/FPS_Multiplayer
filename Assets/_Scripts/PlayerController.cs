@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject bulletImpact;
     //private float timeBetweenShots = 0.1f;
     private float shotCounter;
+    [SerializeField] private float muzzleDisplayTime = 1 / 60f;
+    private float muzzleCounter;
 
     //overheat
     private float maxHeat = 10f,/* heatperShot = 1f,*/ coolRate = 4f, overheatCoolRate = 5f;
@@ -37,6 +39,9 @@ public class PlayerController : MonoBehaviour
 
         UIManager.instance.temperatureSlider.maxValue = maxHeat;
         GunController.instance.SwitchGuns();
+        Transform newPos =  SpawnManager.instance.GetRandomSpawnPositions();
+        transform.position = newPos.position;
+        transform.rotation = newPos.rotation;
     }
 
     void Update()
@@ -58,6 +63,15 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region Gun Overheat Check
+
+        if (GunController.instance.Guns[GunController.instance.currentSelectGun].muzzleFlash.activeInHierarchy)
+        {
+            muzzleCounter -= Time.deltaTime;
+            if (muzzleCounter <= 0)
+            {
+                GunController.instance.Guns[GunController.instance.currentSelectGun].muzzleFlash.SetActive(false);
+            }
+        }
         if (!overheated)
         {
             #region Bullet Shoot
@@ -113,7 +127,14 @@ public class PlayerController : MonoBehaviour
                 GunController.instance.currentSelectGun = GunController.instance.Guns.Length-1;
             }
             GunController.instance.SwitchGuns();
-            Debug.Log(" dsdsdscsddd" + GunController.instance.currentSelectGun);
+        }
+
+        //using number
+        for(int i=0;i < GunController.instance.Guns.Length; i++)
+        {
+            if (Input.GetKeyDown((i + 1).ToString())) {
+                GunController.instance.currentSelectGun = i;
+                GunController.instance.SwitchGuns(); }
         }
         #endregion
     }
@@ -202,6 +223,7 @@ public class PlayerController : MonoBehaviour
             overheated = true;
             UIManager.instance.overHeatMessage.gameObject.SetActive(true);
         }
-
+        GunController.instance.Guns[GunController.instance.currentSelectGun].muzzleFlash.SetActive(true);
+        muzzleCounter = muzzleDisplayTime;
     }
 }

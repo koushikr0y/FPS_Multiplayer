@@ -6,7 +6,7 @@ public class GunController : MonoBehaviour
 {
     public static GunController instance;
     public GunManager[] Guns;
-    public GunDetails[] gunDetails;
+    //public GunDetails[] gunDetails;
     public int currentSelectGun;
     private void Awake()
     {
@@ -27,12 +27,12 @@ public class GunController : MonoBehaviour
             gun.gameObject.SetActive(false);
         }
         Guns[currentSelectGun].gameObject.SetActive(true);
-        Debug.Log(" cs" + currentSelectGun);
+        Guns[currentSelectGun].muzzleFlash.SetActive(false); //after switching guns the muzzle flush should be deactivate
     }
 }
 
-public class GunDetails
-{
-    public bool isAutomatic;
-    public float timeBetweenShots = 0.1f, heatPerShot = 1f;
-}
+//public class GunDetails
+//{
+//    public bool isAutomatic;
+//    public float timeBetweenShots = 0.1f, heatPerShot = 1f;
+//}
