@@ -11,6 +11,12 @@ public class UIManager : MonoBehaviour
     public TMP_Text overHeatMessage;
     [Header("Weapon")]
     [FormerlySerializedAs(oldName:"tempSlider")] public Slider temperatureSlider;
+    [Header("Player")]
+    public Slider playerHealthSlider;
+    [Header("Pannel")]
+    public GameObject deathPanel;
+    public TMP_Text deathText;
+
     private void Awake()
     {
         if (instance != null)
