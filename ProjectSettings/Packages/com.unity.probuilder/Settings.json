@@ -16,7 +16,7 @@
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "editor.toolbarIconGUI",
-                "value": "{\"m_Value\":false}"
+                "value": "{\"m_Value\":true}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -64,6 +64,31 @@
                 "value": "{\"m_Value\":false}"
             },
             {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "smoothing.showPreview",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "smoothing.showNormals",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "smoothing.showSettings",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "smoothing.showHelp",
+                "value": "{\"m_Value\":false}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "UVEditor.showPreviewMaterial",
+                "value": "{\"m_Value\":true}"
+            },
+            {
                 "type": "UnityEngine.ProBuilder.LogLevel, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "log.level",
                 "value": "{\"m_Value\":3}"
@@ -77,6 +102,11 @@
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "log.path",
                 "value": "{\"m_Value\":\"ProBuilderLog.txt\"}"
+            },
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "editor.materialPalettePath",
+                "value": "{\"m_Value\":\"Assets/ProBuilder Data/Default Material Palette.asset\"}"
             },
             {
                 "type": "UnityEngine.ProBuilder.SemVer, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -104,9 +134,14 @@
                 "value": "{\"m_Value\":1}"
             },
             {
+                "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "editor.lastMeshSelectMode",
+                "value": "{\"m_Value\":2}"
+            },
+            {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeBuilder.ActiveShapeIndex",
-                "value": "{\"m_Value\":10}"
+                "value": "{\"m_Value\":5}"
             },
             {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -126,12 +161,12 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize",
-                "value": "{\"m_Value\":{\"x\":-0.7747688293457031,\"y\":5.781321048736572,\"z\":-7.504600524902344}}"
+                "value": "{\"m_Value\":{\"x\":6.399941444396973,\"y\":4.9682841300964359,\"z\":-8.01607894897461}}"
             },
             {
                 "type": "UnityEngine.Quaternion, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastRotation",
-                "value": "{\"m_Value\":{\"x\":0.4999999403953552,\"y\":0.4999999403953552,\"z\":0.4999999403953552,\"w\":0.4999999403953552}}"
+                "value": "{\"m_Value\":{\"x\":0.0,\"y\":0.0,\"z\":0.0,\"w\":1.0}}"
             },
             {
                 "type": "UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -172,6 +207,26 @@
                 "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.Stairs",
                 "value": "{}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.Plane",
+                "value": "{}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.Shapes.Shape, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "ShapeBuilder.Pipe",
+                "value": "{}"
+            },
+            {
+                "type": "UnityEngine.ProBuilder.ExtrudeMethod, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "editor.extrudeMethod",
+                "value": "{\"m_Value\":2}"
+            },
+            {
+                "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "uv.uvEditorGridSnapIncrement",
+                "value": "{\"m_Value\":0.125}"
             }
         ]
     }

@@ -1,5 +1,3 @@
-//using System.Collections;
-//using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 public class PlayerController : MonoBehaviourPunCallbacks
@@ -72,12 +70,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
         {
             CameraMovement();
             PlayerMovement();
-            #region Cursor mode in build
+            #region Cursor mode
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Cursor.lockState = CursorLockMode.None;
             }
-            else if (Cursor.lockState == CursorLockMode.None)
+            else if (Cursor.lockState == CursorLockMode.None && !UIManager.instance.optionPannel.activeInHierarchy)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -246,7 +244,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if (hit.collider.gameObject.CompareTag("Player")) 
             { 
                 PhotonNetwork.Instantiate(playerHitImpact.name, hit.point, Quaternion.identity);
-                hit.collider.gameObject.GetPhotonView().RPC("DealDamage", RpcTarget.All, photonView.Owner.NickName, Guns[currentSelectGun].shotDamage);
+                hit.collider.gameObject.GetPhotonView().RPC("DealDamage", RpcTarget.All, photonView.Owner.NickName, Guns[currentSelectGun].shotDamage,PhotonNetwork.LocalPlayer.ActorNumber);
             }
             else
             {
@@ -271,12 +269,12 @@ public class PlayerController : MonoBehaviourPunCallbacks
     }
 
     [PunRPC] //ShootBullet()
-    private void DealDamage(string damagerName,int damageAmount)
+    private void DealDamage(string damagerName,int damageAmount,int actor)
     {
-        TakeDamage(damagerName,damageAmount);
+        TakeDamage(damagerName,damageAmount,actor);
     }
 
-    private void TakeDamage(string damagerName,int damageAmount)
+    private void TakeDamage(string damagerName,int damageAmount,int actor)
     {
         if (photonView.IsMine) 
         {
@@ -284,7 +282,8 @@ public class PlayerController : MonoBehaviourPunCallbacks
             if (currentHealth <= 0) 
             {
                 currentHealth = 0; 
-                PlayerSpawn.instance.PlayerDie(damagerName); 
+                PlayerSpawn.instance.PlayerDie(damagerName);
+                MatchManager.instance.UpdateStatsSend(actor,0,1);
             }
             UIManager.instance.playerHealthSlider.value = currentHealth;
         }

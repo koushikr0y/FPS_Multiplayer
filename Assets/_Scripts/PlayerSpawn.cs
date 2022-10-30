@@ -30,6 +30,7 @@ public class PlayerSpawn : MonoBehaviour
     {
         
         UIManager.instance.deathText.text = "killed by " + dName;
+        MatchManager.instance.UpdateStatsSend(PhotonNetwork.LocalPlayer.ActorNumber, 1, 1);
         if (player != null) { StartCoroutine(DieCoroutine()); }
         //PhotonNetwork.Destroy(player);
         //SpawnPlayer();
@@ -39,9 +40,14 @@ public class PlayerSpawn : MonoBehaviour
     {
         PhotonNetwork.Instantiate(deathEffect.name, player.transform.position, Quaternion.identity);
         PhotonNetwork.Destroy(player);
+        player = null;
+
         UIManager.instance.deathPanel.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         UIManager.instance.deathPanel.SetActive(false);
-        SpawnPlayer();
+        if (MatchManager.instance.state == MatchManager.GameState.Playing && player == null)
+        {
+            SpawnPlayer();
+        }
     }
 }

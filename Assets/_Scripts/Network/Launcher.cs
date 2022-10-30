@@ -17,7 +17,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     [SerializeField] Transform playerListContent;
     [SerializeField] GameObject playerListItemPrefab;
     [SerializeField] GameObject startGameButton;
-
+    [SerializeField] string[] allMaps;
 
     private void Awake()
     {
@@ -118,5 +118,9 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void LeaveRoom() { PhotonNetwork.LeaveRoom(); }
     //load level
-    public void StartGame() { PhotonNetwork.LoadLevel(1); }
+    public void StartGame() 
+    {
+        PhotonNetwork.LoadLevel(allMaps[Random.Range(0, allMaps.Length)]);
+        //PhotonNetwork.LoadLevel(1);
+    }
 }

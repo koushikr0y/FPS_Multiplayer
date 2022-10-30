@@ -2591,6 +2591,9 @@ MonoBehaviour:
   playerListContent: {fileID: 446907458}
   playerListItemPrefab: {fileID: 8039929169091762645, guid: c8d61fe1763d64046b2fb49ecb21bfc6, type: 3}
   startGameButton: {fileID: 416359923}
+  allMaps:
+  - Map1
+  - Map1
 --- !u!114 &1148073087
 MonoBehaviour:
   m_ObjectHideFlags: 0
