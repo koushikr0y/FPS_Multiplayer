@@ -41,8 +41,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
     private int currentHealth;
     [SerializeField] Transform modelGunPoint, gunHolder;
 
-
     [SerializeField] Animator anim;
+
+    public AudioSource footStepSlow, footStepFast;
 
     void Start()
     {
@@ -201,12 +202,21 @@ public class PlayerController : MonoBehaviourPunCallbacks
         if (Input.GetKey(KeyCode.LeftShift))
         {
             activeMoveSpeed = runSpeed;
+            if(footStepFast.isPlaying && moveDir != Vector3.zero) 
+            { footStepFast.Play();footStepSlow.Stop(); } 
         }
         else
         {
             activeMoveSpeed = moveSpeed;
+            if (footStepSlow.isPlaying && moveDir != Vector3.zero) 
+            { footStepFast.Stop(); footStepSlow.Play(); }
         }
 
+        if(moveDir == Vector3.zero || !isGrounded)
+        {
+            footStepFast.Stop();
+            footStepSlow.Stop(); 
+        }
         float yVel = movement.y;
         movement = ((transform.forward * moveDir.z) + (transform.right * moveDir.x)).normalized * activeMoveSpeed;
         movement.y = yVel;
@@ -214,7 +224,6 @@ public class PlayerController : MonoBehaviourPunCallbacks
         PlayerJump();
         
         charCon.Move(movement * Time.deltaTime);
-
     }
 
     private void PlayerJump()
@@ -266,6 +275,9 @@ public class PlayerController : MonoBehaviourPunCallbacks
         }
         Guns[currentSelectGun].muzzleFlash.SetActive(true);
         muzzleCounter = muzzleDisplayTime;
+
+        Guns[currentSelectGun].shotSound.Stop();
+        Guns[currentSelectGun].shotSound.Play();
     }
 
     [PunRPC] //ShootBullet()
